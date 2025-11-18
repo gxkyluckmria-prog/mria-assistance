@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber MRIA - Toxic Flux System</title>
+<style>
+  * {margin:0; padding:0; box-sizing:border-box; font-family:'Courier New', Courier, monospace;}
+  body, html {height:100%; background:#000; overflow:hidden; color:#0ff;}
+
+  /* Cyber background */
+  body::before {
+    content:'';
+    position:absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: radial-gradient(circle, rgba(0,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: gridMove 12s linear infinite;
+    z-index:0;
+  }
+  @keyframes gridMove {0%{background-position:0 0;}100%{background-position:200px 200px;}}
+
+  /* Toxic particles */
+  .particle {
+    position:absolute;
+    width:4px; height:4px;
+    background: #0ff;
+    box-shadow:0 0 10px #0ff, 0 0 20px #0ff;
+    border-radius:50%;
+    animation: float 8s linear infinite;
+    opacity:0.7;
+  }
+  @keyframes float {0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-250px) translateX(150px);}100%{transform:translateY(0) translateX(0);}}
+
+  .overlay {
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    padding:20px;
+  }
+
+  h1 {
+    font-size:3em;
+    color:#0ff;
+    text-shadow:0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff, 0 0 80px #0ff;
+    margin-bottom:20px;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  @keyframes glow {from {text-shadow:0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;}to {text-shadow:0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;}}
+
+  .typing {
+    display:inline-block;
+    border-right: 3px solid #0ff;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 5s steps(60) 1 forwards, blink 0.7s step-end infinite alternate;
+    font-size:1.4em;
+    margin-bottom:40px;
+  }
+  @keyframes typing {from {width:0;} to {width:70ch;}}
+  @keyframes blink {50% {border-color: transparent;}}
+
+  .button, .nav-button {
+    margin-top:15px;
+    padding:15px 35px;
+    font-size:1.2em;
+    font-weight:bold;
+    border:none;
+    border-radius:10px;
+    background:#0ff;
+    color:#000;
+    cursor:pointer;
+    box-shadow:0 0 20px #0ff;
+    transition: all 0.3s ease;
+  }
+  .button:hover, .nav-button:hover {
+    background:#00ffff;
+    box-shadow:0 0 40px #0ff, 0 0 80px #0ff;
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<!-- Toxic particles -->
+<script>
+  for(let i=0;i<60;i++){
+    let particle = document.createElement('div');
+    particle.className='particle';
+    particle.style.top=Math.random()*100+'%';
+    particle.style.left=Math.random()*100+'%';
+    particle.style.animationDuration=(5+Math.random()*5)+'s';
+    document.body.appendChild(particle);
+  }
+</script>
+
+<div class="overlay">
+  <h1>Cyber Mria MKULIMA Assistant</h1>
+  <div class="typing">Welcome to ask any issues about your problem...</div>
+  <button class="button" onclick="enterSystem()">Enter the System</button>
+  
+</div>
+
+<script>
+function enterSystem(){
+  // Replace '#' with your system page
+  window.location.href="https://gemini.google.com/app/de4e8bb239c9f4cb";
+}
+</script>
+
+</body>
+</html>

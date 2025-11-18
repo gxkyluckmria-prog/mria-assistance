@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Mria UFUGAJI Assistant</title>
+<style>
+  * {margin:0; padding:0; box-sizing:border-box; font-family:'Courier New', Courier, monospace;}
+  body, html {height:100%; background:#1a1a1a; overflow:hidden; color:#0f0;}
+
+  /* Grey cyber grid background */
+  body::before {
+    content:'';
+    position:absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: repeating-linear-gradient(0deg, rgba(128,128,128,0.05), rgba(128,128,128,0.05) 1px, transparent 1px, transparent 20px),
+                repeating-linear-gradient(90deg, rgba(128,128,128,0.05), rgba(128,128,128,0.05) 1px, transparent 1px, transparent 20px);
+    z-index:0;
+    animation: gridMove 15s linear infinite;
+  }
+  @keyframes gridMove {0%{background-position:0 0;}100%{background-position:500px 500px;}}
+
+  /* Toxic particles */
+  .particle {
+    position:absolute;
+    width:4px; height:4px;
+    background:#0f0;
+    border-radius:50%;
+    box-shadow:0 0 10px #0f0, 0 0 20px #0f0;
+    animation: float 10s linear infinite;
+    opacity:0.7;
+  }
+  @keyframes float {
+    0% {transform: translate(0,0);}
+    50% {transform: translate(200px,-250px);}
+    100% {transform: translate(0,0);}
+  }
+
+  .overlay {
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    padding:20px;
+  }
+
+  h1 {
+    font-size:3em;
+    color:#0f0;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0, 0 0 80px #0f0;
+    margin-bottom:20px;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  @keyframes glow {from {text-shadow:0 0 5px #0f0,0 0 10px #0f0;}to{text-shadow:0 0 20px #0f0,0 0 40px #0f0;}}
+
+  .typing {
+    display:inline-block;
+    border-right:3px solid #0f0;
+    white-space: nowrap;
+    overflow:hidden;
+    animation: typing 5s steps(60) 1 forwards, blink 0.7s step-end infinite alternate;
+    font-size:1.5em;
+    margin-bottom:40px;
+  }
+  @keyframes typing {from {width:0;} to {width:60ch;}}
+  @keyframes blink {50% {border-color: transparent;}}
+
+  .button {
+    padding:15px 35px;
+    font-size:1.2em;
+    font-weight:bold;
+    border:none;
+    border-radius:10px;
+    background:#0f0;
+    color:#000;
+    cursor:pointer;
+    box-shadow:0 0 20px #0f0;
+    transition: all 0.3s ease;
+  }
+  .button:hover {
+    background:#0f0;
+    box-shadow:0 0 40px #0f0, 0 0 80px #0f0;
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<!-- Toxic particles -->
+<script>
+  for(let i=0;i<50;i++){
+    let particle = document.createElement('div');
+    particle.className='particle';
+    particle.style.top=Math.random()*100+'%';
+    particle.style.left=Math.random()*100+'%';
+    particle.style.animationDuration=(5+Math.random()*5)+'s';
+    document.body.appendChild(particle);
+  }
+</script>
+
+<div class="overlay">
+  <h1>Welcome to UFUGAJI Assistant</h1>
+  <div class="typing">Ask any question about your UFUGAJI problem...</div>
+  <button class="button" onclick="goSystem()">Enter System</button>
+</div>
+
+<script>
+function goSystem(){
+  // Replace '#' with your actual system page
+  window.location.href="https://chatgpt.com/c/691c2b88-1130-832d-81c8-78367b6ebb17";
+}
+</script>
+
+</body>
+</html>
